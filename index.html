@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Celebrations | Decoração de Luxo & Eventos Exclusivos</title>
+    <meta name="description" content="Criamos celebrações inesquecíveis com decoração de luxo, cenografia personalizada e detalhes pensados para transformar seus momentos especiais em experiências extraordinárias.">
+    
+    <!-- Google Fonts: Playfair Display, Cormorant Garamond, Inter, and Pinyon Script -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Custom Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#FFF2EE',
+                        blush: '#C6A69C',
+                        greige: '#DCD4D2',
+                        dusty: '#E9D5D0',
+                        taupe: '#BFA9A1',
+                        espresso: '#1E1716',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+                        editorial: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        script: ['"Pinyon Script"', 'cursive'],
+                    },
+                    letterSpacing: {
+                        widest: '.22em',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Editorial Animations & Scroll Reveal */
+        body {
+            background-color: #FFF2EE;
+            color: #1E1716;
+            overflow-x: hidden;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.12s; }
+        .reveal-delay-2 { transition-delay: 0.24s; }
+        .reveal-delay-3 { transition-delay: 0.36s; }
+
+        /* Hero Subtle Zoom */
+        @keyframes heroSlowZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.06); }
+        }
+        .animate-hero-bg {
+            animation: heroSlowZoom 18s ease-out forwards;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFF2EE;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #C6A69C;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1E1716;
+        }
+
+        /* Fine line-art icon stroke styling */
+        .service-icon svg {
+            stroke-width: 1.25px;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-blush selection:text-cream">
+
+    <!-- ===================================================================== -->
+    <!-- HEADER & NAVIGATION                                                   -->
+    <!-- ===================================================================== -->
+    <header id="main-header" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 py-6 px-6 md:px-12 text-cream">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#home" class="group flex flex-col items-start">
+                <span class="font-serif text-xl md:text-2xl tracking-widest uppercase font-normal">Luxe Events</span>
+                <span id="header-sub" class="text-[10px] tracking-[0.28em] uppercase opacity-80 transition-opacity">Decoração & Eventos</span>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-10 text-xs uppercase tracking-widest font-medium">
+                <a href="#home" class="hover:text-blush transition-colors">Início</a>
+                <a href="#services" class="hover:text-blush transition-colors">Serviços</a>
+                <a href="#gallery" class="hover:text-blush transition-colors">Galeria</a>
+                <a href="#about" class="hover:text-blush transition-colors">Sobre</a>
+                <a href="#packages" class="hover:text-blush transition-colors">Pacotes</a>
+                <a href="#contact" id="header-cta" class="px-6 py-2.5 rounded-full border border-current hover:bg-blush hover:border-blush hover:text-cream transition-all duration-300">
+                    Contato
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" aria-label="Abrir Menu de Navegação" class="md:hidden p-2 rounded-full focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="fixed inset-0 z-50 bg-cream text-espresso transform translate-x-full transition-transform duration-500 ease-in-out flex flex-col justify-between p-8 md:hidden">
+        <div class="flex items-center justify-between">
+            <span class="font-serif text-xl tracking-widest uppercase">Luxe Events</span>
+            <button id="close-menu-btn" aria-label="Fechar Menu de Navegação" class="p-2 rounded-full hover:bg-dusty/50 transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <nav class="flex flex-col space-y-6 text-center font-serif text-3xl">
+            <a href="#home" class="mobile-link hover:text-blush transition-colors">Início</a>
+            <a href="#services" class="mobile-link hover:text-blush transition-colors">Serviços</a>
+            <a href="#gallery" class="mobile-link hover:text-blush transition-colors">Galeria</a>
+            <a href="#about" class="mobile-link hover:text-blush transition-colors">Sobre</a>
+            <a href="#packages" class="mobile-link hover:text-blush transition-colors">Pacotes</a>
+            <a href="#contact" class="mobile-link hover:text-blush transition-colors">Contato</a>
+        </nav>
+
+        <div class="text-center space-y-4">
+            <p class="font-script text-3xl text-blush">Criando memórias atemporais</p>
+            <a href="#contact" class="mobile-link inline-block w-full py-4 rounded-full bg-blush text-cream text-xs uppercase tracking-widest font-medium">
+                Solicitar Orçamento
+            </a>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 01 — HERO SECTION                                             -->
+    <!-- ===================================================================== -->
+    <section id="home" class="relative min-h-[92vh] md:min-h-screen w-full flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Subtle Animation -->
+        <div class="absolute inset-0 z-0">
+            <img 
+                src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=2000&q=85" 
+                onerror="this.src='https://placehold.co/1920x1080/E9D5D0/1E1716?text=Luxe+Celebrations+Decora%C3%A7%C3%A3o'"
+                alt="Decoração de luxo com flores e balões em tons rosé e creme" 
+                class="w-full h-full object-cover object-center animate-hero-bg"
+            >
+            <!-- Soft Editorial Gradient Overlay for Contrast -->
+            <div class="absolute inset-0 bg-gradient-to-b from-espresso/55 via-espresso/40 to-espresso/65"></div>
+        </div>
+
+        <!-- Hero Editorial Content -->
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center text-cream pt-20">
+            <p class="font-script text-3xl sm:text-4xl md:text-5xl text-dusty mb-3 reveal active">
+                Celebrações elegantes
+            </p>
+            <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.12] tracking-tight mb-6 reveal active reveal-delay-1">
+                Cada Detalhe. Cada Momento. <span class="italic font-editorial">Belamente Projetado.</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-sm sm:text-base md:text-lg text-cream/90 font-light leading-relaxed mb-10 reveal active reveal-delay-2">
+                Criamos celebrações inesquecíveis com decoração de luxo, cenografia exclusiva e detalhes pensados com carinho para transformar seus momentos especiais em experiências extraordinárias.
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 reveal active reveal-delay-3">
+                <a href="#services" class="w-full sm:w-auto px-9 py-4 rounded-full bg-blush text-cream text-xs uppercase tracking-widest font-medium hover:bg-cream hover:text-espresso transition-all duration-300 shadow-lg">
+                    Conheça Nossos Serviços
+                </a>
+                <a href="#contact" class="w-full sm:w-auto px-9 py-4 rounded-full border border-cream/60 text-cream text-xs uppercase tracking-widest font-medium hover:bg-cream/15 transition-all duration-300">
+                    Solicitar Orçamento
+                </a>
+            </div>
+        </div>
+
+        <!-- Delicate Scroll Indicator -->
+        <a href="#services" aria-label="Rolar para Serviços" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center text-cream/80 hover:text-cream transition-colors">
+            <span class="text-[10px] uppercase tracking-[0.25em] mb-2">Role</span>
+            <div class="w-px h-10 bg-gradient-to-b from-cream/80 to-transparent"></div>
+        </a>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 02 — SIGNATURE SERVICES                                       -->
+    <!-- ===================================================================== -->
+    <section id="services" class="py-24 md:py-32 px-6 md:px-12 bg-cream">
+        <div class="max-w-7xl mx-auto">
+            <!-- Section Header -->
+            <div class="text-center max-w-2xl mx-auto mb-16 md:mb-20 reveal">
+                <p class="font-script text-3xl md:text-4xl text-blush mb-2">Celebrações com curadoria impecável</p>
+                <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-espresso">Nossos Serviços Exclusivos</h2>
+            </div>
+
+            <!-- Six Service Categories (6 cols on desktop, 2-3 on mobile/tablet) -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-8">
+                <!-- Service 1: Aniversários -->
+                <div class="group p-6 rounded-2xl border border-greige/70 bg-cream hover:bg-dusty/30 hover:border-blush transition-all duration-500 text-center flex flex-col items-center reveal">
+                    <div class="service-icon w-14 h-14 rounded-full bg-dusty/40 flex items-center justify-center text-blush group-hover:scale-110 group-hover:bg-blush group-hover:text-cream transition-all duration-500 mb-5">
+                        <i data-lucide="cake" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-serif text-lg text-espresso mb-2">Aniversários</h3>
+                    <p class="text-xs text-espresso/70 leading-relaxed font-light">
+                        Celebrações de aniversário personalizadas e intimistas sob medida para o seu estilo.
+                    </p>
+                </div>
+
+                <!-- Service 2: Chá de Bebê -->
+                <div class="group p-6 rounded-2xl border border-greige/70 bg-cream hover:bg-dusty/30 hover:border-blush transition-all duration-500 text-center flex flex-col items-center reveal reveal-delay-1">
+                    <div class="service-icon w-14 h-14 rounded-full bg-dusty/40 flex items-center justify-center text-blush group-hover:scale-110 group-hover:bg-blush group-hover:text-cream transition-all duration-500 mb-5">
+                        <i data-lucide="sparkles" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-serif text-lg text-espresso mb-2">Chá de Bebê</h3>
+                    <p class="text-xs text-espresso/70 leading-relaxed font-light">
+                        Eventos delicados e acolhedores para celebrar a chegada de uma nova vida.
+                    </p>
+                </div>
+
+                <!-- Service 3: Chá de Noiva -->
+                <div class="group p-6 rounded-2xl border border-greige/70 bg-cream hover:bg-dusty/30 hover:border-blush transition-all duration-500 text-center flex flex-col items-center reveal reveal-delay-1">
+                    <div class="service-icon w-14 h-14 rounded-full bg-dusty/40 flex items-center justify-center text-blush group-hover:scale-110 group-hover:bg-blush group-hover:text-cream transition-all duration-500 mb-5">
+                        <i data-lucide="gem" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-serif text-lg text-espresso mb-2">Chá de Noiva</h3>
+                    <p class="text-xs text-espresso/70 leading-relaxed font-light">
+                        Mesas postas editoriais e cenários encantadores criados especialmente para a noiva.
+                    </p>
+                </div>
+
+                <!-- Service 4: Casamentos -->
+                <div class="group p-6 rounded-2xl border border-greige/70 bg-cream hover:bg-dusty/30 hover:border-blush transition-all duration-500 text-center flex flex-col items-center reveal reveal-delay-2">
+                    <div class="service-icon w-14 h-14 rounded-full bg-dusty/40 flex items-center justify-center text-blush group-hover:scale-110 group-hover:bg-blush group-hover:text-cream transition-all duration-500 mb-5">
+                        <i data-lucide="heart" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-serif text-lg text-espresso mb-2">Casamentos</h3>
+                    <p class="text-xs text-espresso/70 leading-relaxed font-light">
+                        Decoração atemporal para cerimônias, instalações florais e recepções inesquecíveis.
+                    </p>
+                </div>
+
+                <!-- Service 5: Eventos Corporativos -->
+                <div class="group p-6 rounded-2xl border border-greige/70 bg-cream hover:bg-dusty/30 hover:border-blush transition-all duration-500 text-center flex flex-col items-center reveal reveal-delay-2">
+                    <div class="service-icon w-14 h-14 rounded-full bg-dusty/40 flex items-center justify-center text-blush group-hover:scale-110 group-hover:bg-blush group-hover:text-cream transition-all duration-500 mb-5">
+                        <i data-lucide="glass-water" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-serif text-lg text-espresso mb-2">Corporativo</h3>
+                    <p class="text-xs text-espresso/70 leading-relaxed font-light">
+                        Lançamentos de marcas, jantares de gala e recepções executivas sofisticadas.
+                    </p>
+                </div>
+
+                <!-- Service 6: Piqueniques de Luxo -->
+                <div class="group p-6 rounded-2xl border border-greige/70 bg-cream hover:bg-dusty/30 hover:border-blush transition-all duration-500 text-center flex flex-col items-center reveal reveal-delay-3">
+                    <div class="service-icon w-14 h-14 rounded-full bg-dusty/40 flex items-center justify-center text-blush group-hover:scale-110 group-hover:bg-blush group-hover:text-cream transition-all duration-500 mb-5">
+                        <i data-lucide="sun" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="font-serif text-lg text-espresso mb-2">Piqueniques de Luxo</h3>
+                    <p class="text-xs text-espresso/70 leading-relaxed font-light">
+                        Experiências intimistas ao ar livre com almofadas, mesas baixas e louças finas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 03 — PORTFOLIO GALLERY                                        -->
+    <!-- ===================================================================== -->
+    <section id="gallery" class="py-24 md:py-32 px-6 md:px-12 bg-dusty/35">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header & Filters -->
+            <div class="text-center max-w-3xl mx-auto mb-12 reveal">
+                <p class="font-script text-3xl md:text-4xl text-blush mb-2">Portfólio selecionado</p>
+                <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-espresso mb-8">Nossas Celebrações Recentes</h2>
+                
+                <!-- Category Filter Pills -->
+                <div id="gallery-filters" class="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+                    <button data-filter="all" class="filter-btn active px-5 py-2.5 rounded-full text-xs uppercase tracking-widest transition-all bg-blush text-cream">
+                        Todos os Eventos
+                    </button>
+                    <button data-filter="Aniversários" class="filter-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-widest transition-all bg-cream text-espresso hover:bg-blush/20">
+                        Aniversários
+                    </button>
+                    <button data-filter="Chá de Bebê" class="filter-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-widest transition-all bg-cream text-espresso hover:bg-blush/20">
+                        Chá de Bebê
+                    </button>
+                    <button data-filter="Casamentos" class="filter-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-widest transition-all bg-cream text-espresso hover:bg-blush/20">
+                        Casamentos
+                    </button>
+                    <button data-filter="Corporativo" class="filter-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-widest transition-all bg-cream text-espresso hover:bg-blush/20">
+                        Corporativo
+                    </button>
+                    <button data-filter="Piqueniques" class="filter-btn px-5 py-2.5 rounded-full text-xs uppercase tracking-widest transition-all bg-cream text-espresso hover:bg-blush/20">
+                        Piqueniques
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dynamic Gallery Grid (Easily extensible via JS array) -->
+            <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- Gallery items rendered dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal for Gallery -->
+    <div id="gallery-modal" class="fixed inset-0 z-50 bg-espresso/90 backdrop-blur-sm hidden items-center justify-center p-4 sm:p-8 opacity-0 transition-opacity duration-300">
+        <button id="close-modal-btn" aria-label="Fechar Visualização" class="absolute top-6 right-6 w-12 h-12 rounded-full bg-cream/10 text-cream hover:bg-blush flex items-center justify-center transition-colors">
+            <i data-lucide="x" class="w-6 h-6"></i>
+        </button>
+        <div class="max-w-4xl w-full flex flex-col items-center">
+            <img id="modal-img" src="" alt="Visualização ampliada da decoração" class="max-h-[75vh] w-auto rounded-2xl shadow-2xl object-contain">
+            <div class="mt-5 text-center text-cream">
+                <span id="modal-category" class="text-[11px] uppercase tracking-widest text-dusty block mb-1"></span>
+                <h3 id="modal-title" class="font-serif text-2xl"></h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 04 — ABOUT THE BRAND                                          -->
+    <!-- ===================================================================== -->
+    <section id="about" class="py-24 md:py-32 px-6 md:px-12 bg-cream">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <!-- Left Column: Editorial Image with Decorative Frame -->
+            <div class="lg:col-span-6 relative reveal">
+                <div class="relative rounded-3xl overflow-hidden shadow-xl aspect-[4/5]">
+                    <img 
+                        src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=85" 
+                        onerror="this.src='https://placehold.co/800x1000/DCD4D2/1E1716?text=Nosso+Est%C3%BAdio+de+Design'"
+                        alt="Mesa posta de luxo à luz de velas com arranjos florais neutros" 
+                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-1000"
+                        loading="lazy"
+                    >
+                </div>
+                <!-- Subtle Floating Accent Card -->
+                <div class="hidden sm:block absolute -bottom-6 -right-6 bg-dusty p-7 rounded-2xl shadow-lg max-w-[240px] border border-cream">
+                    <p class="font-script text-3xl text-espresso mb-1">Arte Sob Medida</p>
+                    <p class="text-xs text-espresso/80 leading-relaxed">
+                        Cada arranjo, tecido e peça decorativa é cuidadosamente pensado para contar a sua história.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right Column: Brand Story -->
+            <div class="lg:col-span-6 lg:pl-6 reveal reveal-delay-1">
+                <p class="font-script text-3xl md:text-4xl text-blush mb-2">Muito além da decoração</p>
+                <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-espresso leading-tight mb-6">
+                    Nós Projetamos. <span class="italic font-editorial">Você Celebra.</span>
+                </h2>
+                <div class="space-y-5 text-espresso/80 font-light leading-relaxed text-sm sm:text-base mb-10">
+                    <p>
+                        Toda celebração merece ser extraordinária. Damos vida à sua visão por meio de um design autoral, cenografia elegante e detalhes meticulosamente selecionados.
+                    </p>
+                    <p>
+                        De encontros intimistas a grandes comemorações marcantes, nosso objetivo é transformar cada evento em uma atmosfera envolvente, onde você e seus convidados aproveitam momentos que se tornam lindas memórias.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-3 gap-6 py-6 border-y border-greige mb-10">
+                    <div>
+                        <span class="font-serif text-2xl sm:text-3xl text-espresso block">150+</span>
+                        <span class="text-[11px] uppercase tracking-wider text-espresso/60">Eventos Realizados</span>
+                    </div>
+                    <div>
+                        <span class="font-serif text-2xl sm:text-3xl text-espresso block">100%</span>
+                        <span class="text-[11px] uppercase tracking-wider text-espresso/60">Projetos Autorais</span>
+                    </div>
+                    <div>
+                        <span class="font-serif text-2xl sm:text-3xl text-espresso block">5.0★</span>
+                        <span class="text-[11px] uppercase tracking-wider text-espresso/60">Avaliação Clientes</span>
+                    </div>
+                </div>
+
+                <a href="#experience" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-blush text-cream text-xs uppercase tracking-widest font-medium hover:bg-espresso transition-colors duration-300">
+                    <span>Nossa História & Processo</span>
+                    <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 05 — EXPERIENCE & PROCESS                                     -->
+    <!-- ===================================================================== -->
+    <section id="experience" class="py-24 md:py-32 px-6 md:px-12 bg-taupe/25">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16 md:mb-20 reveal">
+                <p class="font-script text-3xl md:text-4xl text-blush mb-2">Experiência impecável</p>
+                <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-espresso">Projetado em Torno dos Seus Sonhos</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+                <!-- Step 01 -->
+                <div class="p-8 md:p-10 rounded-3xl bg-cream border border-greige/60 shadow-sm hover:shadow-md transition-all duration-300 reveal">
+                    <span class="font-editorial italic text-5xl text-blush block mb-6">01.</span>
+                    <h3 class="font-serif text-2xl text-espresso mb-3">Sua Visão</h3>
+                    <p class="text-sm text-espresso/75 font-light leading-relaxed">
+                        Conhecemos seus desejos, referências, estilo, paleta de cores e todas as expectativas para a sua celebração.
+                    </p>
+                </div>
+
+                <!-- Step 02 -->
+                <div class="p-8 md:p-10 rounded-3xl bg-cream border border-greige/60 shadow-sm hover:shadow-md transition-all duration-300 reveal reveal-delay-1">
+                    <span class="font-editorial italic text-5xl text-blush block mb-6">02.</span>
+                    <h3 class="font-serif text-2xl text-espresso mb-3">Design Criativo</h3>
+                    <p class="text-sm text-espresso/75 font-light leading-relaxed">
+                        Criamos uma proposta visual personalizada com painéis, arranjos florais, esculturas orgânicas e composição harmônica.
+                    </p>
+                </div>
+
+                <!-- Step 03 -->
+                <div class="p-8 md:p-10 rounded-3xl bg-cream border border-greige/60 shadow-sm hover:shadow-md transition-all duration-300 reveal reveal-delay-2">
+                    <span class="font-editorial italic text-5xl text-blush block mb-6">03.</span>
+                    <h3 class="font-serif text-2xl text-espresso mb-3">Execução Impecável</h3>
+                    <p class="text-sm text-espresso/75 font-light leading-relaxed">
+                        Transformamos o projeto em uma decoração real, elegante e memorável, cuidando de toda a montagem e finalização.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 06 — LUXURY PACKAGES                                          -->
+    <!-- ===================================================================== -->
+    <section id="packages" class="py-24 md:py-32 px-6 md:px-12 bg-cream">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16 md:mb-20 reveal">
+                <p class="font-script text-3xl md:text-4xl text-blush mb-2">Investimentos sob medida</p>
+                <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-espresso mb-4">Nossos Pacotes de Luxo</h2>
+                <p class="text-xs sm:text-sm text-espresso/70 font-light">
+                    Todos os pacotes podem ser personalizados com arranjos florais naturais, papelaria fina e mobiliário exclusivo.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                <!-- Package 1: CLASSIC -->
+                <div class="p-8 md:p-10 rounded-3xl bg-cream border border-greige flex flex-col justify-between hover:border-blush transition-all duration-300 reveal">
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-blush font-semibold block mb-2">Classic</span>
+                        <div class="flex items-baseline gap-2 mb-4">
+                            <span class="text-xs uppercase tracking-wider text-espresso/60">A partir de</span>
+                            <span class="font-serif text-4xl md:text-5xl text-espresso">R$ 2.250</span>
+                        </div>
+                        <p class="text-sm text-espresso/75 font-light leading-relaxed mb-8">
+                            Ideal para celebrações intimistas e encontros menores que buscam um toque de elegância refinada.
+                        </p>
+                        <ul class="space-y-3.5 text-sm text-espresso/85 font-light mb-10 border-t border-greige/60 pt-6">
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-blush shrink-0"></i>
+                                <span>Arco orgânico desconstruído (até 3 metros)</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-blush shrink-0"></i>
+                                <span>Painel cenográfico principal de destaque</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-blush shrink-0"></i>
+                                <span>Consultoria personalizada de paleta de cores</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-blush shrink-0"></i>
+                                <span>Entrega, montagem e desmontagem completas</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <button onclick="selectPackage('Classic (A partir de R$ 2.250)')" class="w-full py-4 rounded-full border border-blush text-espresso text-xs uppercase tracking-widest font-medium hover:bg-blush hover:text-cream transition-all duration-300">
+                        Solicitar Orçamento
+                    </button>
+                </div>
+
+                <!-- Package 2: PREMIUM (Featured Prominent Card) -->
+                <div class="p-9 md:p-12 rounded-3xl bg-dusty/50 border-2 border-blush shadow-xl relative flex flex-col justify-between lg:-translate-y-4 reveal reveal-delay-1">
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-blush text-cream text-[10px] uppercase tracking-widest px-4 py-1 rounded-full font-medium">
+                        Mais Solicitado
+                    </div>
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-espresso font-semibold block mb-2">Premium</span>
+                        <div class="flex items-baseline gap-2 mb-4">
+                            <span class="text-xs uppercase tracking-wider text-espresso/70">A partir de</span>
+                            <span class="font-serif text-5xl md:text-6xl text-espresso">R$ 4.750</span>
+                        </div>
+                        <p class="text-sm text-espresso/80 font-light leading-relaxed mb-8">
+                            Perfeito para aniversários marcantes, chás de bebê, chás de noiva e ocasiões especiais.
+                        </p>
+                        <ul class="space-y-3.5 text-sm text-espresso/90 font-light mb-10 border-t border-blush/30 pt-6">
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-blush shrink-0"></i>
+                                <span>Cenografia arquitetônica em múltiplas camadas</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-blush shrink-0"></i>
+                                <span>Instalação orgânica de luxo com flores permanentes</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-blush shrink-0"></i>
+                                <span>Cilindros de design e suporte para bolo e doces</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-blush shrink-0"></i>
+                                <span>Placa de boas-vindas personalizada em acrílico</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-blush shrink-0"></i>
+                                <span>Montagem e finalização artística exclusiva</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <button onclick="selectPackage('Premium (A partir de R$ 4.750)')" class="w-full py-4 rounded-full bg-blush text-cream text-xs uppercase tracking-widest font-medium hover:bg-espresso transition-all duration-300 shadow-md">
+                        Solicitar Orçamento
+                    </button>
+                </div>
+
+                <!-- Package 3: LUXE -->
+                <div class="p-8 md:p-10 rounded-3xl bg-cream border border-greige flex flex-col justify-between hover:border-blush transition-all duration-300 reveal reveal-delay-2">
+                    <div>
+                        <span class="text-xs uppercase tracking-widest text-blush font-semibold block mb-2">Luxe</span>
+                        <div class="flex items-baseline gap-2 mb-4">
+                            <span class="text-xs uppercase tracking-wider text-espresso/60">A partir de</span>
+                            <span class="font-serif text-4xl md:text-5xl text-espresso">R$ 7.250</span>
+                        </div>
+                        <p class="text-sm text-espresso/75 font-light leading-relaxed mb-8">
+                            Produção editorial completa para casamentos, eventos de luxo e celebrações inesquecíveis.
+                        </p>
+                        <ul class="space-y-3.5 text-sm text-espresso/85 font-light mb-10 border-t border-greige/60 pt-6">
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-blush shrink-0"></i>
+                                <span>Conceito completo e projeto espacial do ambiente</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-blush shrink-0"></i>
+                                <span>Instalação cenográfica central com flores naturais</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-blush shrink-0"></i>
+                                <span>Mesa posta completa para convidados e velas</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-blush shrink-0"></i>
+                                <span>Papelaria personalizada, menus e sinalização</span>
+                            </li>
+                            <li class="flex items-center gap-3">
+                                <i data-lucide="check" class="w-4 h-4 text-blush shrink-0"></i>
+                                <span>Direção criativa presencial durante a montagem</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <button onclick="selectPackage('Luxe (A partir de R$ 7.250)')" class="w-full py-4 rounded-full border border-blush text-espresso text-xs uppercase tracking-widest font-medium hover:bg-blush hover:text-cream transition-all duration-300">
+                        Solicitar Orçamento
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 07 — TESTIMONIALS                                             -->
+    <!-- ===================================================================== -->
+    <section id="testimonials" class="py-24 md:py-32 px-6 md:px-12 bg-dusty/35">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <p class="font-script text-3xl md:text-4xl text-blush mb-2">Palavras de carinho</p>
+                <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-espresso">O Que Nossos Clientes Dizem</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="p-8 md:p-10 rounded-3xl bg-cream border border-greige/70 flex flex-col justify-between reveal">
+                    <div>
+                        <div class="flex items-center gap-1 text-blush mb-6 text-sm tracking-widest">
+                            ★★★★★
+                        </div>
+                        <blockquote class="font-serif italic text-lg md:text-xl text-espresso leading-relaxed mb-8">
+                            "Cada detalhe ficou absolutamente impecável. Transformaram o que eu imaginava em algo que jamais vou esquecer. Meus convidados não paravam de fotografar."
+                        </blockquote>
+                    </div>
+                    <div class="border-t border-greige/60 pt-4">
+                        <p class="font-medium text-sm text-espresso">Camila Mendes</p>
+                        <p class="text-xs text-blush uppercase tracking-wider mt-0.5">Celebração de Aniversário</p>
+                    </div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="p-8 md:p-10 rounded-3xl bg-cream border border-greige/70 flex flex-col justify-between reveal reveal-delay-1">
+                    <div>
+                        <div class="flex items-center gap-1 text-blush mb-6 text-sm tracking-widest">
+                            ★★★★★
+                        </div>
+                        <blockquote class="font-serif italic text-lg md:text-xl text-espresso leading-relaxed mb-8">
+                            "Do projeto inicial até a colocação da última flor, toda a experiência foi leve e encantadora. A paleta em rosé e creme parecia saída de uma revista."
+                        </blockquote>
+                    </div>
+                    <div class="border-t border-greige/60 pt-4">
+                        <p class="font-medium text-sm text-espresso">Sophia Laurent</p>
+                        <p class="text-xs text-blush uppercase tracking-wider mt-0.5">Chá de Noiva</p>
+                    </div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="p-8 md:p-10 rounded-3xl bg-cream border border-greige/70 flex flex-col justify-between reveal reveal-delay-2">
+                    <div>
+                        <div class="flex items-center gap-1 text-blush mb-6 text-sm tracking-widest">
+                            ★★★★★
+                        </div>
+                        <blockquote class="font-serif italic text-lg md:text-xl text-espresso leading-relaxed mb-8">
+                            "Verdadeiros artistas com um olhar extraordinário para o refinamento. Decoraram nosso chá de bebê intimista com tanta delicadeza e sofisticação."
+                        </blockquote>
+                    </div>
+                    <div class="border-t border-greige/60 pt-4">
+                        <p class="font-medium text-sm text-espresso">Helena Vasconcelos</p>
+                        <p class="text-xs text-blush uppercase tracking-wider mt-0.5">Chá de Bebê</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECTION 08 — CONTACT & WHATSAPP CONVERSION                            -->
+    <!-- ===================================================================== -->
+    <section id="contact" class="py-24 md:py-32 px-6 md:px-12 bg-cream">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+            <!-- Left Column: Editorial Invitation -->
+            <div class="lg:col-span-5 flex flex-col justify-between reveal">
+                <div>
+                    <p class="font-script text-3xl md:text-4xl text-blush mb-2">Vamos tornar inesquecível</p>
+                    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-normal text-espresso leading-tight mb-6">
+                        Vamos Planejar Sua Celebração
+                    </h2>
+                    <p class="text-sm sm:text-base text-espresso/75 font-light leading-relaxed mb-10">
+                        Conte-nos sobre o seu próximo evento, estilo desejado e data da celebração. Preencha o formulário ao lado para receber uma proposta personalizada diretamente pelo WhatsApp.
+                    </p>
+
+                    <div class="space-y-6 text-sm">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-dusty/50 flex items-center justify-center text-blush shrink-0">
+                                <i data-lucide="message-circle" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <span class="font-medium text-espresso block">Atendimento Direto</span>
+                                <span class="text-espresso/70 font-light">+55 (11) 99999-8888 · Disponível no WhatsApp</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-dusty/50 flex items-center justify-center text-blush shrink-0">
+                                <i data-lucide="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <span class="font-medium text-espresso block">E-mail do Estúdio</span>
+                                <span class="text-espresso/70 font-light">contato@luxecelebrations.com.br</span>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-dusty/50 flex items-center justify-center text-blush shrink-0">
+                                <i data-lucide="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <span class="font-medium text-espresso block">Área de Atendimento</span>
+                                <span class="text-espresso/70 font-light">Atendemos eventos locais e Destination Events</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 pt-8 border-t border-greige/70 hidden lg:block">
+                    <p class="font-script text-3xl text-blush">Luxe Celebrations</p>
+                    <p class="text-xs text-espresso/60 mt-1">Estúdio de Cenografia de Luxo & Design Floral</p>
+                </div>
+            </div>
+
+            <!-- Right Column: Interactive Quote Request Form -->
+            <div class="lg:col-span-7 reveal reveal-delay-1">
+                <form id="quote-form" class="p-8 sm:p-10 md:p-12 rounded-3xl bg-dusty/35 border border-greige/80 shadow-sm space-y-6">
+                    <div class="mb-2">
+                        <h3 class="font-serif text-2xl text-espresso">Solicitar um Orçamento</h3>
+                        <p class="text-xs text-espresso/65 mt-1">Seus dados serão organizados em uma mensagem pronta no WhatsApp para atendimento imediato.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <!-- Name -->
+                        <div>
+                            <label for="name" class="block text-xs uppercase tracking-wider text-espresso/80 mb-2">Nome *</label>
+                            <input type="text" id="name" required placeholder="Seu nome completo"
+                                class="w-full px-4 py-3.5 rounded-xl bg-cream border border-greige focus:border-blush focus:outline-none text-sm text-espresso placeholder:text-espresso/40 transition-colors">
+                        </div>
+
+                        <!-- Email -->
+                        <div>
+                            <label for="email" class="block text-xs uppercase tracking-wider text-espresso/80 mb-2">E-mail *</label>
+                            <input type="email" id="email" required placeholder="seu@email.com.br"
+                                class="w-full px-4 py-3.5 rounded-xl bg-cream border border-greige focus:border-blush focus:outline-none text-sm text-espresso placeholder:text-espresso/40 transition-colors">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                        <!-- Phone / WhatsApp -->
+                        <div>
+                            <label for="phone" class="block text-xs uppercase tracking-wider text-espresso/80 mb-2">Telefone / WhatsApp *</label>
+                            <input type="tel" id="phone" required placeholder="(11) 99999-9999"
+                                class="w-full px-4 py-3.5 rounded-xl bg-cream border border-greige focus:border-blush focus:outline-none text-sm text-espresso placeholder:text-espresso/40 transition-colors">
+                        </div>
+
+                        <!-- Event Type -->
+                        <div>
+                            <label for="eventType" class="block text-xs uppercase tracking-wider text-espresso/80 mb-2">Tipo de Evento *</label>
+                            <select id="eventType" required
+                                class="w-full px-4 py-3.5 rounded-xl bg-cream border border-greige focus:border-blush focus:outline-none text-sm text-espresso transition-colors">
+                                <option value="" disabled selected>Selecione o seu evento</option>
+                                <option value="Celebração de Aniversário">Celebração de Aniversário</option>
+                                <option value="Chá de Bebê">Chá de Bebê</option>
+                                <option value="Chá de Noiva">Chá de Noiva</option>
+                                <option value="Casamento">Casamento</option>
+                                <option value="Evento Corporativo">Evento Corporativo</option>
+                                <option value="Piquenique de Luxo">Piquenique de Luxo</option>
+                                <option value="Outro Evento Personalizado">Outro Evento Personalizado</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                        <!-- Event Date -->
+                        <div>
+                            <label for="eventDate" class="block text-xs uppercase tracking-wider text-espresso/80 mb-2">Data do Evento *</label>
+                            <input type="date" id="eventDate" required
+                                class="w-full px-4 py-3.5 rounded-xl bg-cream border border-greige focus:border-blush focus:outline-none text-sm text-espresso transition-colors">
+                        </div>
+
+                        <!-- Location -->
+                        <div>
+                            <label for="location" class="block text-xs uppercase tracking-wider text-espresso/80 mb-2">Localização / Espaço</label>
+                            <input type="text" id="location" placeholder="Cidade ou Espaço"
+                                class="w-full px-4 py-3.5 rounded-xl bg-cream border border-greige focus:border-blush focus:outline-none text-sm text-espresso placeholder:text-espresso/40 transition-colors">
+                        </div>
+
+                        <!-- Guest Count -->
+                        <div>
+                            <label for="guests" class="block text-xs uppercase tracking-wider text-espresso/80 mb-2">Nº de Convidados</label>
+                            <input type="number" id="guests" min="1" placeholder="Ex: 40"
+                                class="w-full px-4 py-3.5 rounded-xl bg-cream border border-greige focus:border-blush focus:outline-none text-sm text-espresso placeholder:text-espresso/40 transition-colors">
+                        </div>
+                    </div>
+
+                    <!-- Message -->
+                    <div>
+                        <label for="message" class="block text-xs uppercase tracking-wider text-espresso/80 mb-2">Sua Visão e Detalhes</label>
+                        <textarea id="message" rows="3" placeholder="Conte-nos sobre o tema, paleta de cores ou pacote escolhido..."
+                            class="w-full px-4 py-3.5 rounded-xl bg-cream border border-greige focus:border-blush focus:outline-none text-sm text-espresso placeholder:text-espresso/40 transition-colors"></textarea>
+                    </div>
+
+                    <!-- Submit CTA -->
+                    <button type="submit" class="w-full py-4 px-8 rounded-full bg-blush text-cream text-xs uppercase tracking-widest font-medium hover:bg-espresso transition-all duration-300 shadow-md flex items-center justify-center gap-3">
+                        <span>Solicitar Meu Orçamento pelo WhatsApp</span>
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- FOOTER                                                                -->
+    <!-- ===================================================================== -->
+    <footer class="bg-espresso text-cream py-16 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto flex flex-col items-center text-center">
+            <a href="#home" class="font-serif text-2xl md:text-3xl tracking-widest uppercase mb-3">
+                Luxe Celebrations
+            </a>
+            <p class="font-script text-3xl text-dusty mb-8">
+                Criando momentos lindos que duram para sempre.
+            </p>
+
+            <!-- Footer Navigation -->
+            <div class="flex flex-wrap justify-center gap-8 text-xs uppercase tracking-widest text-cream/75 mb-8">
+                <a href="#home" class="hover:text-blush transition-colors">Início</a>
+                <a href="#services" class="hover:text-blush transition-colors">Serviços</a>
+                <a href="#gallery" class="hover:text-blush transition-colors">Galeria</a>
+                <a href="#about" class="hover:text-blush transition-colors">Sobre</a>
+                <a href="#packages" class="hover:text-blush transition-colors">Pacotes</a>
+                <a href="#contact" class="hover:text-blush transition-colors">Contato</a>
+            </div>
+
+            <!-- Social Links -->
+            <div class="flex items-center gap-6 mb-10">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="w-10 h-10 rounded-full border border-cream/20 flex items-center justify-center text-cream/80 hover:border-blush hover:bg-blush hover:text-cream transition-all">
+                    <i data-lucide="instagram" class="w-4 h-4"></i>
+                </a>
+                <a href="https://pinterest.com" target="_blank" rel="noopener noreferrer" aria-label="Pinterest" class="w-10 h-10 rounded-full border border-cream/20 flex items-center justify-center text-cream/80 hover:border-blush hover:bg-blush hover:text-cream transition-all">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="https://wa.me/5511999998888?text=Ol%C3%A1%20Luxe%20Celebrations!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20decora%C3%A7%C3%A3o%20de%20evento." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="w-10 h-10 rounded-full border border-cream/20 flex items-center justify-center text-cream/80 hover:border-blush hover:bg-blush hover:text-cream transition-all">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i>
+                </a>
+            </div>
+
+            <div class="w-full max-w-md h-px bg-cream/15 mb-6"></div>
+            <p class="text-xs text-cream/50 font-light">
+                © 2026 Luxe Celebrations. Todos os direitos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <!-- ===================================================================== -->
+    <!-- FLOATING WHATSAPP CONCIERGE BUTTON                                    -->
+    <!-- ===================================================================== -->
+    <a 
+        href="https://wa.me/5511999998888?text=Ol%C3%A1%20Luxe%20Celebrations!%20Gostaria%20de%20solicitar%20um%20or%C3%A7amento%20para%20o%20meu%20pr%C3%B3ximo%20evento." 
+        target="_blank" 
+        rel="noopener noreferrer"
+        aria-label="Fale conosco pelo WhatsApp"
+        class="fixed bottom-6 right-6 z-40 group flex items-center gap-3 bg-espresso text-cream pl-4 pr-3 py-3 rounded-full shadow-xl border border-blush/40 hover:bg-blush transition-all duration-300"
+    >
+        <span class="hidden sm:inline text-xs uppercase tracking-widest font-medium pl-1">Orçamento</span>
+        <div class="w-9 h-9 rounded-full bg-blush group-hover:bg-espresso flex items-center justify-center transition-colors">
+            <i data-lucide="message-circle" class="w-5 h-5 text-cream"></i>
+        </div>
+    </a>
+
+    <!-- Custom Notification Toast (Replaces alert()) -->
+    <div id="toast-notification" class="fixed bottom-24 right-6 z-50 bg-espresso text-cream px-6 py-4 rounded-2xl shadow-2xl border border-blush/50 transform translate-y-10 opacity-0 pointer-events-none transition-all duration-300 max-w-sm">
+        <div class="flex items-start gap-3">
+            <i data-lucide="sparkles" class="w-5 h-5 text-blush shrink-0 mt-0.5"></i>
+            <div>
+                <p id="toast-title" class="font-serif text-base">Redirecionando para o WhatsApp</p>
+                <p id="toast-desc" class="text-xs text-cream/80 font-light mt-0.5">Abrindo sua solicitação de orçamento preenchida...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- INTERACTIVE SCRIPTS                                                   -->
+    <!-- ===================================================================== -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Configuração: Substitua pelo número de WhatsApp da empresa (DDI + DDD + Número, sem símbolos)
+        const WHATSAPP_NUMBER = "5511999998888";
+
+        // =====================================================================
+        // 1. EASILY EDITABLE PORTFOLIO DATA ARRAY
+        // =====================================================================
+        const galleryItems = [
+            {
+                id: 1,
+                title: "Celebração Rosé & Creme",
+                category: "Aniversários",
+                image: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=900&q=80",
+                aspect: "aspect-[4/5]"
+            },
+            {
+                id: 2,
+                title: "Brunch Jardim de Rosas",
+                category: "Casamentos",
+                image: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=80",
+                aspect: "aspect-[4/5]"
+            },
+            {
+                id: 3,
+                title: "Boas-Vindas Nuvem Neutra",
+                category: "Chá de Bebê",
+                image: "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=900&q=80",
+                aspect: "aspect-[4/5]"
+            },
+            {
+                id: 4,
+                title: "Piquenique de Luxo ao Pôr do Sol",
+                category: "Piqueniques",
+                image: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=900&q=80",
+                aspect: "aspect-[4/5]"
+            },
+            {
+                id: 5,
+                title: "Lançamento Maison Atelier",
+                category: "Corporativo",
+                image: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=900&q=80",
+                aspect: "aspect-[4/5]"
+            },
+            {
+                id: 6,
+                title: "Recepção à Luz de Velas",
+                category: "Casamentos",
+                image: "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=900&q=80",
+                aspect: "aspect-[4/5]"
+            }
+        ];
+
+        // =====================================================================
+        // 2. RENDER & FILTER GALLERY
+        // =====================================================================
+        const galleryGrid = document.getElementById('gallery-grid');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+
+        function renderGallery(filter = 'all') {
+            galleryGrid.innerHTML = '';
+            const filtered = filter === 'all' 
+                ? galleryItems 
+                : galleryItems.filter(item => item.category === filter);
+
+            filtered.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = `group relative rounded-3xl overflow-hidden cursor-pointer bg-greige/40 shadow-sm hover:shadow-xl transition-all duration-500 ${item.aspect}`;
+                card.innerHTML = `
+                    <img 
+                        src="${item.image}" 
+                        onerror="this.src='https://placehold.co/800x1000/DCD4D2/1E1716?text=${encodeURIComponent(item.title)}'"
+                        alt="${item.title}" 
+                        loading="lazy"
+                        class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    >
+                    <div class="absolute inset-0 bg-gradient-to-t from-espresso/80 via-espresso/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-7 text-cream">
+                        <span class="text-[10px] uppercase tracking-[0.22em] text-dusty mb-1">${item.category}</span>
+                        <div class="flex items-center justify-between gap-4">
+                            <h3 class="font-serif text-xl sm:text-2xl font-normal">${item.title}</h3>
+                            <span class="w-9 h-9 rounded-full bg-cream/20 backdrop-blur-sm flex items-center justify-center shrink-0">
+                                <i data-lucide="maximize-2" class="w-4 h-4"></i>
+                            </span>
+                        </div>
+                    </div>
+                `;
+                card.addEventListener('click', () => openModal(item));
+                galleryGrid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-blush', 'text-cream', 'active');
+                    b.classList.add('bg-cream', 'text-espresso');
+                });
+                btn.classList.remove('bg-cream', 'text-espresso');
+                btn.classList.add('bg-blush', 'text-cream', 'active');
+                renderGallery(btn.dataset.filter);
+            });
+        });
+
+        // Initial render
+        renderGallery();
+
+        // =====================================================================
+        // 3. GALLERY LIGHTBOX MODAL
+        // =====================================================================
+        const modal = document.getElementById('gallery-modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalTitle = document.getElementById('modal-title');
+        const modalCategory = document.getElementById('modal-category');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+
+        function openModal(item) {
+            modalImg.src = item.image;
+            modalTitle.textContent = item.title;
+            modalCategory.textContent = item.category;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                document.body.style.overflow = '';
+            }, 300);
+        }
+
+        closeModalBtn.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+        });
+
+        // =====================================================================
+        // 4. HEADER SCROLL BEHAVIOR & MOBILE MENU
+        // =====================================================================
+        const header = document.getElementById('main-header');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMenuBtn = document.getElementById('close-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 60) {
+                header.classList.add('bg-cream/95', 'backdrop-blur-md', 'text-espresso', 'shadow-sm', 'py-4');
+                header.classList.remove('text-cream', 'py-6');
+            } else {
+                header.classList.remove('bg-cream/95', 'backdrop-blur-md', 'text-espresso', 'shadow-sm', 'py-4');
+                header.classList.add('text-cream', 'py-6');
+            }
+        });
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('translate-x-full');
+            document.body.style.overflow = 'hidden';
+        });
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('translate-x-full');
+            document.body.style.overflow = '';
+        }
+
+        closeMenuBtn.addEventListener('click', closeMobileMenu);
+        mobileLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
+
+        // =====================================================================
+        // 5. PACKAGE SELECTION & WHATSAPP QUOTE INTEGRATION
+        // =====================================================================
+        function selectPackage(packageName) {
+            const messageField = document.getElementById('message');
+            const contactSection = document.getElementById('contact');
+            messageField.value = `Olá! Tenho interesse no pacote ${packageName} para a minha próxima celebração.`;
+            contactSection.scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => document.getElementById('name').focus(), 700);
+        }
+
+        function showToast(title, desc) {
+            const toast = document.getElementById('toast-notification');
+            document.getElementById('toast-title').textContent = title;
+            document.getElementById('toast-desc').textContent = desc;
+            toast.classList.remove('translate-y-10', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+            }, 4000);
+        }
+
+        const quoteForm = document.getElementById('quote-form');
+        quoteForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const eventType = document.getElementById('eventType').value;
+            const eventDate = document.getElementById('eventDate').value;
+            const location = document.getElementById('location').value.trim() || 'Não informado';
+            const guests = document.getElementById('guests').value || 'Não informado';
+            const message = document.getElementById('message').value.trim() || 'Gostaria de conversar sobre a decoração do meu evento!';
+
+            const formattedText = 
+`✨ *LUXE CELEBRATIONS — SOLICITAÇÃO DE ORÇAMENTO* ✨
+
+*Nome:* ${name}
+*E-mail:* ${email}
+*WhatsApp/Telefone:* ${phone}
+*Tipo de Evento:* ${eventType}
+*Data do Evento:* ${eventDate}
+*Localização:* ${location}
+*Convidados Estimados:* ${guests}
+
+*Visão & Detalhes:*
+${message}`;
+
+            const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(formattedText)}`;
+            
+            showToast("Preparando Sua Solicitação", "Abrindo o WhatsApp com os detalhes do seu evento...");
+            
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+            }, 600);
+        });
+
+        // =====================================================================
+        // 6. SCROLL REVEAL OBSERVER
+        // =====================================================================
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: "0px 0px -40px 0px"
+        });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>
